@@ -1,0 +1,93 @@
+{% extends "blog/base.html" %}
+{% load staticfiles %}
+{% block title %} About {% endblock %}
+
+{% block header %}
+    <header class="intro-header" style="background-image: url({% static "img/about-bg.jpg" %})">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading" style="text-align: center;">
+                        <h1 style="font-size: 80px;">About Me</h1>
+                        <hr class="small" style="visibility: hidden;">
+                        <span class="subheading">想像力こそが、すべてを変える</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="postlist">
+                    <h2 style="text-align: center; margin-top:20px;">
+                        <button class="btn btn-danger btn-large btn-block btn-like-add" id="like"
+                                style="width: 120px; border-radius: 100px; margin: 30px auto">Like ❤
+                        </button>
+                        已有 <span id="like_count">{{ like_count }} </span> Likes
+                    </h2>
+                    <hr>
+
+                    {{ post.html_body | safe }}
+
+                    <hr>
+                    <!-- 来必力City版安装代码 -->
+                    <div id="lv-container" data-id="city" data-uid="MTAyMC8yODI1MS80ODIz">
+                        <script type="text/javascript">
+                            (function (d, s) {
+                                var j, e = d.getElementsByTagName(s)[0];
+
+                                if (typeof LivereTower === 'function') {
+                                    return;
+                                }
+
+                                j = d.createElement(s);
+                                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                                j.async = true;
+
+                                e.parentNode.insertBefore(j, e);
+                            })(document, 'script');
+                        </script>
+                        <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+                    </div>
+                    <!-- City版安装代码已完成 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
+{% block bodyelse %}
+    <script>
+        $(document).ready(function () {
+            var flag = 1;
+            $('.btn-danger').click(function () {
+                if (flag) {
+                    flag = 0;
+                    $(".btn-like-add").removeClass("btn-danger");
+                    $(".btn-like-add").addClass("btn-primary");
+                    $(".btn-like-add").text("LIKED");
+                    $.getJSON('{% url "blog:like" %}',
+                        function (data) {
+                            $("#like_count").text(data.like_count);
+                            $("body").append('<audio ' +
+                                'autoplay="autoplay"  loop="loop" preload="auto"' +
+                                'src="http://7xj74s.com1.z0.glb.clouddn.com/%E4%BA%94%E6%9C%88%E5%A4%A9%20-%20%E5%A6%82%E6%9E%9C%E6%88%91%E4%BB%AC%E4%B8%8D%E6%9B%BE%E7%9B%B8%E9%81%87.mp3">'+
+                                '</audio>')
+                            flag = 0;
+                        }
+                    );
+                }
+            });
+        })
+    </script>
+
+{% endblock %}
+

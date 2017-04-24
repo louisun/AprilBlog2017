@@ -1,0 +1,45 @@
+{% extends "blog/base.html" %}
+{% load staticfiles %}
+{% block title %} Archives {% endblock %}
+
+{% block header %}
+    <header class="intro-header" style="background-image: url({% static "img/post-bg.jpg" %})">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading" style="text-align: center;">
+                        <h1 style="font-size: 80px;">Archives</h1>
+                        <hr class="small" style="visibility: hidden;">
+                        <span class="subheading">想像力こそが、すべてを変える</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="postlist">
+                    {% for year, blogposts in posts %}
+
+                        <p style="text-align: left;font-size: 50px; color: #3F3C3C; text-shadow: 2px 2px 2px #666;font-weight: 400" >{{ year }}&nbsp;</p>
+                        {% for post in blogposts %}
+                            <p style="padding: auto;">
+                                <span style="color: #777777;">{{ post.publish | date:"Y-m-d" }}</span>
+                                <a href="{{ post.get_absolute_url }}"
+                                   style="font-weight: bold; padding-left: 30px; text-decoration: none"> {{ post.title }} </a>
+                            </p>
+                        {% endfor %}
+                        <hr>
+
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

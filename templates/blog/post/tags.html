@@ -1,0 +1,55 @@
+{% extends "blog/base.html" %}
+{% load staticfiles %}
+{% block title %}Tags{% endblock %}
+
+{% block headelse %}
+    <link href="{% static 'css/tagcloud.min.css' %}" rel="stylesheet">
+    <script src="{% static 'js/tagcloud.min.js' %}"></script>
+{% endblock %}
+
+
+
+{% block header %}
+    <header class="intro-header" style="background-image: url({% static "img/contact-bg.jpg" %})">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading" style="text-align: center;">
+                        <h1 style="font-size: 80px;"> Tag Cloud </h1>
+                        <hr class="small" style="visibility: hidden;">
+                        <span class="subheading">想像力こそが、すべてを変える</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div style="height: 600px; ">
+                <div class="tagcloud">
+                    {% for tag in  tags %}
+
+                        <i class="fa fa-tag" aria-hidden="true">
+                            <a href="{% url 'blog:tag_detail'  tag.slug %}"
+                               style="font-family: Lora;font-weight: bold"> {{ tag.name }}</a>
+                        </i>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
+{% block bodyelse %}
+    <script type="text/javascript">
+        tagcloud({fontsize: 24, radius: 100,});
+    </script>
+{% endblock %}

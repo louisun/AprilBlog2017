@@ -1,0 +1,40 @@
+{% extends "blog/base.html" %}
+{% load staticfiles %}
+{% block title %} 标签:{{ tag.name }} {% endblock %}
+
+{% block header %}
+    <header class="intro-header" style="background-image: url({% static "img/home-bg.jpg" %})">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1 style="font-size: 80px">{{ tag.name }}</h1>
+                        <hr class="small" style="visibility: hidden;">
+                        <span class="subheading">想像力こそが、すべてを変える</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="postlist">
+                    {% for post in posts %}
+                        <p>
+                            <span style="color: #777777; padding-left: 100px">{{ post.publish | date:"Y-m-d" }}</span>
+                            <a href="{{ post.get_absolute_url }}"  style="font-weight: bold; padding-left: 30px; text-decoration: none"> {{ post.title }} </a>
+                        </p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+

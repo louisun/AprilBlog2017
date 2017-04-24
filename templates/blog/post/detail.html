@@ -1,0 +1,65 @@
+{% extends "blog/base.html" %}
+{% load staticfiles %}
+{% block title %} {{ post.title }} {% endblock %}
+
+{% block header %}
+    <header class="intro-header" style="background-image: url({% static "img/post-bg.jpg" %})">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading" style="text-align: center;">
+                        <h1 style="font-size: 80px;">{{ post.title }}</h1>
+                        <hr class="small" style="visibility: hidden;">
+                        <h2 class="subheading" style="font-family: Helvetica,Arial">{{ post.subtitle }}
+                            <span style="font-weight: bold">{{ post.publish | date:"F d, Y" }}</span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div id="taglist">
+                    {% for tag in post.tags.all %}
+                        <span class="label label-success">
+                        <i class="fa fa-tag" aria-hidden="true">&nbsp;<a
+                                href="{% url "blog:tag_detail" tag.slug %}">{{ tag.name }}</a></i>
+                            {% if not forloop.last %}&nbsp;{% endif %}
+                    </span>
+                    {% endfor %}
+                </div>
+
+                {{ post.html_body | safe }}
+                <hr>
+                <!-- 来必力City版安装代码 -->
+                <div id="lv-container" data-id="city" data-uid="MTAyMC8yODI1MS80ODIz">
+                    <script type="text/javascript">
+                        (function (d, s) {
+                            var j, e = d.getElementsByTagName(s)[0];
+
+                            if (typeof LivereTower === 'function') {
+                                return;
+                            }
+
+                            j = d.createElement(s);
+                            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                            j.async = true;
+
+                            e.parentNode.insertBefore(j, e);
+                        })(document, 'script');
+                    </script>
+                    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+                </div>
+                <!-- City版安装代码已完成 -->
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
