@@ -11,8 +11,10 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+import socket
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -22,10 +24,18 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'prglt*p41rgfdco!ml+l16^#m=bdl-h$+nvp5irk1d)be96e90'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+if socket.gethostname() == 'vps-ubuntu':
+    DEBUG = False
 
-ALLOWED_HOSTS = ['www.roadsheep.com']
+else:
+    DEBUG = True
+
+
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'www.roadsheep.com',
+]
 
 
 # Application definition
@@ -129,7 +139,7 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/home/louisun/markdown_file'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 REDIS_HOST = 'localhost'
