@@ -72,3 +72,4 @@ target/
 db.sqlite3
 media/
 blog/migrations/
+*.uwsgi
