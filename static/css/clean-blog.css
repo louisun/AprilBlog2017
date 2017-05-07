@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Microsoft YaHei UI', Helvetica, Arial, 'Times New Roman', serif;
-    font-size: 20px;
+    font-size: 18px;
     color: #333333;
 }
 
@@ -434,37 +434,36 @@ form .row:first-child .floating-label-form-group {
     margin: 20px 0 0;
 }
 
-.pager li > a,
-.pager li > span {
+.pager span > a{
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 12px;
     letter-spacing: 1px;
     font-weight: 600;
-    padding: 15px 25px;
+    padding: 10px 10px;
     background-color: white;
     border-radius: 0;
+    min-width: 100px;
 }
 
-.pager li > a:hover,
-.pager li > a:focus {
+.pager span > a:hover,
+.pager span > a:focus {
     color: white;
     background-color: #3F3C3C;
+    text-decoration: none;
 }
 
-#current,
-#current:hover {
-    border: 0px;
-    color: dimgray;
-    background-color: white;
-    text-transform: none;
-}
+
+
+
+
 
 .pager > .previous {
     float: left;
 }
 
-.pager > .current > span {
+.pager > span.current {
+    font-size: 14px;
     text-align: center;
 }
 
@@ -475,7 +474,7 @@ form .row:first-child .floating-label-form-group {
 ::-moz-selection {
     color: white;
     text-shadow: none;
-    background: #3F3C3C;
+    background: #fff9c0;
 }
 
 ::selection {
@@ -521,7 +520,7 @@ body {
     font-size: 16px;
     font-weight: 600;
     letter-spacing: 1px;
-    border-radius: 0;
+    border-radius: 20px;
 }
 
 .postlist {

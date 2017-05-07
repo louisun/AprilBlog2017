@@ -39,15 +39,13 @@
                         <div id="postbody">
                             {{ post.snippet | safe }}
                         </div>
-
+                        <br>
                         <a href="{{ post.get_absolute_url }}" class="cfx" id="more">
-                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>
                             <span style="font-family: 'Open Sans',Helvetica">
-                               &nbsp;READ MORE&nbsp;
+                               &nbsp;&nbsp;READ MORE&nbsp;&nbsp;
                             </span>
-                            <i class="fa fa-hand-o-left" aria-hidden="true"></i>
                         </a>
-                        <br><br>
+                        <br><br><br>
                         <p class="post-meta">
                             Posted by
                             <span style="font-weight: bold"> {{ post.author }}</span>
@@ -65,38 +63,66 @@
                     <hr>
                 {% endfor %}
                 {% with page=posts %}
-                    <div>
-                        <ul class="pager">
-                            {% if page.has_previous %}
-                                <li class="previous">
-                                    <a href="?page={{ page.previous_page_number }}"> &larr; Previous</a>
-                                </li>
-                            {% else %}
-                                <li class="previous">
-                                    <a href="javascript:void(0);"
-                                       style="background-color: #3F3C3C; color:white; cursor: default">No
-                                        Previous</a>
-                                </li>
-                            {% endif %}
+                    <div class="pager">
+                        {% if page.has_previous %}
+                            <span class="previous">
+                                <a href="?page={{ page.previous_page_number }}">Previous</a>
+                            </span>
+                        {% else %}
+                            <span class="previous">
+                                <a href="javascript:void(0);" style="background-color: #3F3C3C; color:white; cursor: default">NO PREVIOUS</a>
+                            </span>
+                        {% endif %}
 
-                            <li class="current" style="text-align: center; padding: 35px"><a style="cursor: default"
-                                                                                             id="current">Page {{ page.number }}
-                                of {{ page.paginator.num_pages }}</a></li>
+                        <span class="current">
+                            <span>{{page.number }} of {{ page.paginator.num_pages }}</span>
+                        </span>
 
-                            {% if page.has_next %}
-                                <li class="next">
-                                    <a href="?page={{ page.next_page_number }}">Older Posts &rarr;</a>
-                                </li>
+                        {% if page.has_next %}
+                            <span class="next">
+                                <a href="?page={{ page.next_page_number }}">Older</a>
+                            </span>
 
-                            {% else %}
-                                <li class="next">
-                                    <a href="javascript:void(0);"
-                                       style="background-color: #3F3C3C; color:white; cursor: default">THE END
-                                    </a>
-                                </li>
-                            {% endif %}
-                        </ul>
+                        {% else %}
+                            <span class="next">
+                                <a href="javascript:void(0);"
+                                   style="background-color: #3F3C3C; color:white; cursor: default">THE END
+                                </a>
+                            </span>
+                        {% endif %}
                     </div>
+                    {#                    <div>#}
+                    {#                        <ul class="pager">#}
+                    {#                            {% if page.has_previous %}#}
+                    {#                                <li class="previous">#}
+                    {#                                    <a href="?page={{ page.previous_page_number }}"> &larr; Previous</a>#}
+                    {#                                </li>#}
+                    {#                            {% else %}#}
+                    {#                                <li class="previous">#}
+                    {#                                    <a href="javascript:void(0);"#}
+                    {#                                       style="background-color: #3F3C3C; color:white; cursor: default">No#}
+                    {#                                        Pre</a>#}
+                    {#                                </li>#}
+                    {#                            {% endif %}#}
+                    {##}
+                    {#                            <li class="current" style="text-align: center; padding: 35px"><a style="cursor: default"#}
+                    {#                                                                                             id="current">{{ page.number }}#}
+                    {#                                of {{ page.paginator.num_pages }}</a></li>#}
+                    {##}
+                    {#                            {% if page.has_next %}#}
+                    {#                                <li class="next">#}
+                    {#                                    <a href="?page={{ page.next_page_number }}">Older Posts &rarr;</a>#}
+                    {#                                </li>#}
+                    {##}
+                    {#                            {% else %}#}
+                    {#                                <li class="next">#}
+                    {#                                    <a href="javascript:void(0);"#}
+                    {#                                       style="background-color: #3F3C3C; color:white; cursor: default">THE END#}
+                    {#                                    </a>#}
+                    {#                                </li>#}
+                    {#                            {% endif %}#}
+                    {#                        </ul>#}
+                    {#                    </div>#}
                 {% endwith %}
                 <hr>
             </div>

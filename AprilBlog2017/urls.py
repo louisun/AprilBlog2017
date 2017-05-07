@@ -1,6 +1,8 @@
 from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.views.generic import RedirectView
+
 from blog.views import article_list
 from django.conf import settings
 
@@ -15,7 +17,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', article_list, name="index"),
     url(r'^blog/', include('blog.urls', namespace='blog', app_name='blog')),
-    url(r'^sitemap\.xml$', sitemap, {'sitemaps':sitemaps}, name='django.contrib.sitemaps.views.sitemap')
+    url(r'^sitemap\.xml$', sitemap, {'sitemaps':sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    url(r'^favicon\.ico$',RedirectView.as_view(url=r'static/img/favicon.ico'))
 
 ]
 
