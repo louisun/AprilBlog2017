@@ -474,7 +474,7 @@ form .row:first-child .floating-label-form-group {
 ::-moz-selection {
     color: white;
     text-shadow: none;
-    background: #fff9c0;
+    background: #454545;
 }
 
 ::selection {
@@ -555,4 +555,8 @@ body {
 .btn a, .btn:focus, .btn:active, .btn:hover{
     outline: none;
     text-decoration: none;
+}
+
+img {
+    max-width: 100%;
 }
