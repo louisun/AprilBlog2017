@@ -103,13 +103,13 @@ class Article(models.Model):
 
         snippet = snippet.encode('utf-8')
 
-        self.snippet = markdown(snippet, extras=['fenced-code-blocks'])
+        self.snippet = markdown(snippet, extras={'fenced-code-blocks':None,'tables':None,'cuddled-lists':None,'pyshell':None,'html-classes':{'table':'table table-hover table-bordered'}})
 
         # body
         if type(self.body) == str:
             self.body = self.body.encode('utf-8')
 
-        self.html_body = markdown(self.body, extras=['fenced-code-blocks'])
+        self.html_body = markdown(self.body, extras={'fenced-code-blocks':None,'tables':None,'cuddled-lists':None,'pyshell':None,'html-classes':{'table':'table table-hover table-bordered'}})
 
 
         super(Article, self).save(*args, **kwargs)
