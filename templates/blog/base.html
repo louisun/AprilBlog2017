@@ -36,7 +36,7 @@
 
     <!-- Code Static Files -->
     <link href="{% static "css/tomorrow_night_eighties.min.css" %}" rel="stylesheet">
-    <link href="//at.alicdn.com/t/font_3mx62j35n8iod2t9.css" rel="stylesheet">
+    <link href="//at.alicdn.com/t/font_zs3dd9ii3g1u4n29.css" rel="stylesheet">
 
     {% block headelse %}{% endblock %}
 </head>
@@ -53,7 +53,9 @@
                 <span class="sr-only">Toggle navigation</span>
                 Menu <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand" href="{% url "blog:article_list" %}" id="left_top">RoadSheep</a>
+            <a class="navbar-brand" href="{% url "blog:article_list" %}" id="left_top">
+                RoadSheep
+            </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -117,23 +119,30 @@
                 <ul class="list-inline text-center">
                     <li>
                         <a href="http://weibo.com/u/6201251338">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-weibo fa-stack-2x"></i>
-                                </span>
+                                 <span class="fa-stack fa-lg"> 
+                                    <i class="iconfont" style="font-size:2em;width: 100%">&#xe601;</i>
+                                 </span> 
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.douban.com/people/roadsheep">
+                                 <span class="fa-stack fa-lg"> 
+                                    <i class="iconfont" style="font-size:2em;width: 100%">&#xe64d;</i>
+                                 </span> 
                         </a>
                     </li>
                    <li>
                         <a href="https://www.zhihu.com/people/louisun">
-                                <span class="fa-stack fa-lg">
-                                    <i class="iconfont" style="font-size:2em;width: 100%">&#xe636;</i>
-                                </span>
+                                 <span class="fa-stack fa-lg"> 
+                                    <i class="iconfont" style="font-size:2em;width: 100%">&#xe607;</i>
+                                 </span> 
                         </a>
                     </li>
                     <li>
                         <a href="https://github.com/louisun">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-github fa-stack-2x"></i>
-                                </span>
+                                 <span class="fa-stack fa-lg"> 
+                                    <i class="iconfont" style="font-size:2em;width: 100%">&#xe70a;</i>
+                                 </span> 
                         </a>
                     </li>
                 </ul>
