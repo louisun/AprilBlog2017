@@ -32,7 +32,6 @@
             <div style="height: 600px; ">
                 <div class="tagcloud">
                     {% for tag in  tags %}
-
                         <i class="fa fa-tag" aria-hidden="true">
                             <a href="{% url 'blog:tag_detail'  tag.slug %}"
                                style="font-family: Lora;font-weight: bold"> {{ tag.name }}</a>
